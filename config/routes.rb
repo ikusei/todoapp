@@ -1,10 +1,14 @@
 Todoapp::Application.routes.draw do
+  match "todos/index",    to: "todos#index",   via: "get"
+  match "todos/delete",   to: "todos#index",   via: "delete"
+  match "todos/add",      to: "todos#add",     via: "post"
+  match "todos/complete", to: "todos#complete",     via: "post"
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  #root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

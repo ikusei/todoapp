@@ -35,6 +35,12 @@ end
 #Authentication with Devise
 gem 'devise'
 
+#Bootstrap
+gem 'bootstrap-sass', '2.3.2.0'
+
+# Administration Framework
+#gem 'activeadmin'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
