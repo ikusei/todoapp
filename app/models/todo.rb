@@ -1,8 +1,8 @@
 class Todo < ActiveRecord::Base
-  validates :todo_item, presence: true
-  #validates :user_id, presence: true
-
   belongs_to :user
-  
-  #default_scope -> { order('created_at DESC') }
+
+  validates :todo_item, presence: true
+  validates :user_id, presence: true
+ 
+ default_scope order: 'todos.created_at DESC'
 end

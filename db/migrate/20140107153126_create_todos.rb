@@ -6,7 +6,7 @@ class CreateTodos < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :todos, [:user_id, :created_at]
+    add_index :todos, :user_id
   end
 
 

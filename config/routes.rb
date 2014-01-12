@@ -1,9 +1,13 @@
 Todoapp::Application.routes.draw do
-  match "todos/index",    to: "todos#index",   via: "get"
-  match "todos/delete",   to: "todos#index",   via: "delete"
-  match "todos/add",      to: "todos#add",     via: "post"
-  match "todos/complete", to: "todos#complete",     via: "post"
+  root  'todos#index'
+  match "todos/show",     to: "todos#show",       via: "get"
+  match "todos/index",    to: "todos#index",      via: "get"
+  match "todos/destroy",  to: "todos#destroy",    via: "delete"
+  match "todos/create",   to: "todos#create",     via: "post"
+  match "todos/edit",     to: "todos#edit",       via: "post"
+  match "todos/test",     to: "todos#test",       via: "get"
   devise_for :users
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
