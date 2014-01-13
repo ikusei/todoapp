@@ -1,32 +1,27 @@
-<%= csrf_meta_tag %>
-<div class="container"> 
-  <div class="row"> 
-    <div class="span4"> 
+<h1>Listing todos</h1>
 
-<title>Todo App </title>
-<h1>Todo App</h1>
- <a href="todos/show"><u><p>All your todos are here</p></u></a>
- <%= form_for @new_todo, :url => { :action => "create" }  do |f|  %>
-    <%= f.text_field  :todo_item %>
-    <%= f.submit "Add todo", class: "btn btn-primary" %>
- <%end%>
+<table>
+  <thead>
+    <tr>
+      <th>Todo item</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<% if flash[:error] %>
- <div class="alert alert-error">
-    <button type="button" class="close" data-dismiss="alert" >×</button>
-    <strong><%= flash[:error] %></strong>
-    </div>
-<% end %>
+  <tbody>
+    <% @todos.each do |todo| %>
+      <tr>
+        <td><%= todo.todo_item %></td>
+        <td><%= link_to 'Show', todo %></td>
+        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
+        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<% if flash[:success] %>
-  <div class="alert alert-success">
-    <strong><%= flash[:success] %></strong>
-  </div>
-<% end %>
+<br>
 
-
-
-</div> <!-- well -->
-    </div> <!-- span4 -->
-  </div> <!-- row -->
-</div> <!-- container -->
+<%= link_to 'New Todo', new_todo_path %>

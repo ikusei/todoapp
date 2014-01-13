@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Todoapp::Application.config.secret_key_base = '562cfe8471dd6d4ee24577a196fa5c922cb7aa147298538422acdedacc4f5e3ab6a4f598bf4f5217b10efe5c0574e2a6cbd83264f82c3a9c9c09da67bca5ac25'
+ScaffoldingTodo::Application.config.secret_key_base = '6231ebafbc1c2a31eed7924f152232c3535167e7f0fad53bacb56d027553bdcec47e472b00b540752b02ebfed8174306877220fd8c2d83282444f2d6d08972b0'

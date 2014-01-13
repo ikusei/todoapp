@@ -1,18 +1,18 @@
-Todoapp::Application.routes.draw do
-  root  'todos#index'
-  match "todos/show",     to: "todos#show",       via: "get"
-  match "todos/index",    to: "todos#index",      via: "get"
-  match "todos/destroy",  to: "todos#destroy",    via: "delete"
-  match "todos/create",   to: "todos#create",     via: "post"
-  match "todos/edit",     to: "todos#edit",       via: "post"
-  match "todos/test",     to: "todos#test",       via: "get"
+ScaffoldingTodo::Application.routes.draw do
   devise_for :users
+  resources :todos
+
+  root  'todos#new'
+  match '/new',     to: 'todos#new',            via: 'get'
+  match '/edit',    to: 'todos#edit',           via: 'get'
+  match '/show',    to: 'todos#show',           via: 'get'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root 'welcome#index'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

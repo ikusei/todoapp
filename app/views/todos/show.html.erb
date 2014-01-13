@@ -1,27 +1,9 @@
-<%= form_tag("/todos/edit/", :url => { :action => "create" }) do %>
-  <ul style="list-style-type:none;">
-    <% @todos.each do |t| %> 
-        <% if t.completed == true %>
-          <li style="color:grey;">
-            <%= check_box_tag  "todos_checkbox[]",t.id %> 
-            <strike>
-              <%= t.todo_item %>
-            </strike>
-          </li>
-        <% else %>
-          <li>
-            <%= check_box_tag "todos_checkbox[]",t.id %>
-            <%= t.todo_item %>
-          </li>
-        <% end %>
-        <a href=""><u>
-          <%= render 'todo' %>
-        </u></a>
-    <%end%>
-  </ul>
-  <%= submit_tag("Complete Todos", :class=>"btn btn-success") %>
-<%end %>
+<p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Todo item:</strong>
+  <%= @todo.todo_item %>
+</p>
 
-
-
+<%= link_to 'Edit', edit_todo_path(@todo) %> |
+<%= link_to 'Back', todos_path %>

@@ -14,4 +14,3 @@ Bonus:
 Requirements:
   - Devise should be use for loggin in and registration
   - A User "A" can not see ToDos of user "B"
-  
