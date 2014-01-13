@@ -6,7 +6,7 @@ class TodosController < ApplicationController
   def index
     @user = current_user
     @todos = @user.todos
-    @todo_items = Todo.all
+    #@todo_items = Todo.all
   end
 
   # GET /todos/1

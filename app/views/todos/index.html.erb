@@ -1,5 +1,5 @@
 <div class="container"> 
-  <div class="row"> 
+<div class="row"> 
     <div class="span4"> 
 
 <title>Todo App </title>
@@ -9,7 +9,7 @@
 
 <%= form_tag("/todos/complete/", :method => "post") do %>
   <ul style="list-style-type:none;">
-    <% @todo_items.each do |t| %> 
+    <% @todos.each do |t| %>
          <% if t.completed == true %>
            <li style="color:grey;"> <%= check_box_tag  "todos_checkbox[]",t.id %>  <strike><%= t.todo_item %></strike> </li>
          <% else %>
