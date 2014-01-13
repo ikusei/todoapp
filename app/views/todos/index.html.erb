@@ -1,27 +1,26 @@
-<h1>Listing todos</h1>
+<div class="container"> 
+  <div class="row"> 
+    <div class="span4"> 
 
-<table>
-  <thead>
-    <tr>
-      <th>Todo item</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<title>Todo App </title>
+<h1>Todo App</h1>
+<p>All your todos here</p>
+ 
 
-  <tbody>
-    <% @todos.each do |todo| %>
-      <tr>
-        <td><%= todo.todo_item %></td>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= form_tag("/todos/complete/", :method => "post") do %>
+  <ul style="list-style-type:none;">
+    <% @todo_items.each do |t| %> 
+         <% if t.completed == true %>
+           <li style="color:grey;"> <%= check_box_tag  "todos_checkbox[]",t.id %>  <strike><%= t.todo_item %></strike> </li>
+         <% else %>
+           <li> <%= check_box_tag  "todos_checkbox[]",t.id %> <%= t.todo_item %>  </li>
+         <% end %>
+    <%end%>
+  </ul>
+  <%= submit_tag("Complete Todos", :class=>"btn btn-success") %>
+<%end %>
 
-<br>
-
-<%= link_to 'New Todo', new_todo_path %>
+</div> <!-- well -->
+    </div> <!-- span4 -->
+  </div> <!-- row -->
+</div> <!-- container -->
