@@ -6,6 +6,8 @@ ScaffoldingTodo::Application.routes.draw do
   match '/new',              to: 'todos#new',            via: 'get'
   match '/edit',             to: 'todos#edit',           via: 'get'
   match '/show',             to: 'todos#show',           via: 'get'
+
+
   match 'todos/complete' => 'todos#complete', :via => :post
 
   # The priority is based upon order of creation: first created -> highest priority.
