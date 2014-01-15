@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Todoapp::Application.load_tasks
+ScaffoldingTodo::Application.load_tasks

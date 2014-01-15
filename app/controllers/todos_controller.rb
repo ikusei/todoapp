@@ -1,27 +1,62 @@
 # encoding: utf-8
 
 class TodosController < ApplicationController
+  before_action :set_todo, only: [:show, :edit, :update, :destroy]
 
+  # GET /todos
+  # GET /todos.json
   def index
-    @todo_items = Todo.all
-    @new_todo = Todo.new
+    @user = current_user
+    @todos = @user.todos
   end
 
-  def delete
-   #put delete logic here
+  # GET /todos/1
+  # GET /todos/1.json
+  def show
   end
 
-  def add
-   todo = Todo.create(:todo_item => params[:todo][:todo_item])
-   unless todo.valid?
-     flash[:error] = todo.errors.full_messages.join("<br>").html_safe
-   else
-     flash[:success] = "Todo added successfully"
-   end
-  redirect_to :action => 'index'
+  # GET /todos/new
+  def new
+    @todo = Todo.new
   end
 
-  def complete
+  # GET /todos/1/edit
+  def edit
+  end
+
+  # POST /todos
+  # POST /todos.json
+  def create
+    @todo = current_user.todos.create(:todo_item => params[:todo][:todo_item])
+
+    respond_to do |format|
+      if @todo.save
+        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @todo }
+      else
+        format.html { render action: 'new' }
+        format.json { render json: @todo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /todos/1
+  # PATCH/PUT /todos/1.json
+  def update
+    respond_to do |format|
+      if @todo.update(todo_params)
+        format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @todo.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST / todos
+  # MARK AS COMPLETED
+ def complete
     params[:todos_checkbox].each do |check|
        todo_id = check
        t = Todo.find_by_id(todo_id)
@@ -30,5 +65,24 @@ class TodosController < ApplicationController
     redirect_to :action => 'index'
   end
 
+  # DELETE /todos/1
+  # DELETE /todos/1.json
+  def destroy
+    @todo.destroy
+    respond_to do |format|
+      format.html { redirect_to todos_url }
+      format.json { head :no_content }
+    end
+  end
 
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_todo
+      @todo = Todo.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def todo_params
+      params.require(:todo).permit(:todo_item)
+    end
 end
