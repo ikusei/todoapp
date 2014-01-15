@@ -36,6 +36,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+# Active Admin
+gem 'activeadmin', github: 'gregbell/active_admin'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
